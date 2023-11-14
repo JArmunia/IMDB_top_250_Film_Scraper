@@ -109,6 +109,9 @@ class ImdbscraperDownloaderMiddleware:
 
 
 class ScrapeOpsFakeUserAgentMiddleware:
+    """
+    Middleware to set a random user agent using the fake-useragent package.
+    """
 
     def __init__(self, settings):
         self.ua = UserAgent()
@@ -122,6 +125,9 @@ class ScrapeOpsFakeUserAgentMiddleware:
 
 
 class ScrapeOpsFakeBrowserHeaderAgentMiddleware:
+    """
+    Middleware to set a random browser header using the fake-useragent package and some other headers.
+    """
 
     def __init__(self):
         self.ua = UserAgent()
@@ -184,13 +190,11 @@ class ScrapeOpsFakeBrowserHeaderAgentMiddleware:
 
         return header
 
-    # Usar la función para obtener headers aleatorios
 
     def process_request(self, request, spider):
         random_header = self.generate_random_header()
         request.headers["User-Agent"] = random_header["User-Agent"]
         request.headers["Accept"] = random_header["Accept"]
-        #request.headers["Accept-Language"] = random_header["Accept-Language"]
         request.headers["Referer"] = random_header["Referer"]
         request.headers["DNT"] = random_header["DNT"]
         request.headers["Cache-Control"] = random_header["Cache-Control"]

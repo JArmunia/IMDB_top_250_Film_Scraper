@@ -5,14 +5,10 @@
 
 import scrapy
 
-
-class ImdbscraperItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
-
-
 class FilmItem(scrapy.Item):
+    """
+    Item for storing film data
+    """
 
     url = scrapy.Field()
     name = scrapy.Field()
